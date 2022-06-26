@@ -4,13 +4,13 @@ function Theme() {
     <div className={classes.theme_slider}>
       <div className={classes.theme_images}>
         <span className={classes.img_container}>
-            <img src='/theme_1.jpg' />
+            <a href='/'><img src='/theme_1.jpg' /></a>
         </span>
         <span className={classes.img_container}>
-            <img src='/theme_2.jpg' />
+            <a href='/'><img src='/theme_2.jpg' /></a>
         </span>
         <span className={classes.img_container}>
-            <img src='/theme_3.jpg' />
+            <a href='/'><img src='/theme_3.jpg' /></a>
         </span>
       </div>
     </div>

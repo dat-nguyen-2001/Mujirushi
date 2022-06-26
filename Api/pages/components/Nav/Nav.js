@@ -1,8 +1,13 @@
-import classes from './Nav.module.css'
+import classes from './Nav.module.css';
+
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import ErrorOutlineRoundedIcon from '@mui/icons-material/ErrorOutlineRounded';
 import DensityMediumIcon from '@mui/icons-material/DensityMedium';
+
+import Link from 'next/link';
+
+
 function Nav() {
   return (
     <>
@@ -11,13 +16,12 @@ function Nav() {
         <DensityMediumIcon />
       </div>
       <div className={classes.nav_img}>
-        <img src='/nav_img.png' alt='Muji nav_bar logo' />
+        <Link href='/'><a><img src='/nav_img.png' alt='Muji nav_bar logo' /></a></Link>
       </div>
 
       <div className={classes.nav_options}>
-        <div className={classes.options_item}>衣料品</div>
-        <div className={classes.options_item}>生活雑貨</div>
-        <div className={classes.options_item}>食品</div> 
+      <div className={classes.options_item}><Link href="products"><a>製品</a></Link></div>
+        <div className={classes.options_item}><Link href="/"><a>店</a></Link></div>
       </div>
         {/* // leave it for now */}
       {/* <div className={classes.nav_search}>
@@ -27,26 +31,26 @@ function Nav() {
       <div className={classes.nav_user}>
         <div className={classes.login}>
             <div>
-                <PersonRoundedIcon/>
+              <Link href='/login'><a><PersonRoundedIcon/></a></Link>
             </div>
             <div className={classes.login_text}>
-                ログイン
+              <Link href='/login'><a>ログイン</a></Link>
             </div>
         </div>
         <div className={classes.cart}>
             <div>
-                <ShoppingCartRoundedIcon/>
+                <Link href="/cart"><a><ShoppingCartRoundedIcon/></a></Link>
             </div>
             <div className={classes.cart_text}>
-                カード
+              <Link href="/cart"><a>カード</a></Link>
             </div>
         </div>
         <div className={classes.info}>
             <div>
-                <ErrorOutlineRoundedIcon/>
+              <Link href="/about"><a><ErrorOutlineRoundedIcon/></a></Link>
             </div>
             <div>
-                サポート
+              <Link href="about"><a>インフォ</a></Link>
             </div>
         </div>
       </div>

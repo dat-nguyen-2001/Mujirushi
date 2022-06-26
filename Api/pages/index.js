@@ -4,7 +4,11 @@ import Theme from './components/Theme/Theme';
 import Card from './components/Card/Card';
 import Footer from './components/Footer/Footer';
 
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+
 export default function Home() {
+
   return (
     <div>
       <Head>
@@ -30,7 +34,7 @@ export default function Home() {
           <Card img="recommended-categories/stuffs.webp" title="掃除用品" description ="気持ちいい掃除に欠かせないのは、場所や汚れに適した道具を上手に選ぶこと。最適な道具を使いこなして効率的な掃除を継続しましょう。"/>
         </div>
         <div className='showMoreButton'>
-          <button >もっと見る</button>
+          <Link href="/products"><a><button>もっと見る</button></a></Link>
         </div>
       </div>
 
