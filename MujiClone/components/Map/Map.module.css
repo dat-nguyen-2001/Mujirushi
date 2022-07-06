@@ -1,0 +1,8 @@
+.map {
+    width: 81vw;
+    margin: auto;
+  }
+  
+  .map iframe {
+    width: 100%;
+  }

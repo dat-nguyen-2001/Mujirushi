@@ -1,0 +1,14 @@
+.net_store {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10vw, 19.25vw));
+    gap: 1.5rem;
+    justify-content: center;
+    font-size: small;
+}
+
+@media screen and (max-width: 750px) {
+.net_store {
+    grid-template-columns: repeat(auto-fit, minmax(10vw, 45vw));
+    gap: 2vw;
+}
+}

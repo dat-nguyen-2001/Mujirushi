@@ -1,0 +1,10 @@
+.about {
+    max-width: 50rem;
+    margin: auto;
+    padding: 4rem 1.5rem;
+}
+
+.h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
