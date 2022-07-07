@@ -5,7 +5,7 @@ import Footer from '../../../components/Footer/Footer';
 function getProductInfo(props) {
     const product = props.product;
     const subImgs = product.subImg;
-    const categories = product.categories;
+    const category = product.category;
     return (
       <div>
         <Nav />
@@ -14,9 +14,8 @@ function getProductInfo(props) {
             <div className={classes.product_details}>
                 <h1>{product.title}</h1>
                 <p><b>{product.price}</b> vnd</p>
-                <div className={classes.product_categories}>
-                    <p>{categories[0]}</p>
-                    <p>{categories[1]}</p>
+                <div className={classes.product_category}>
+                    <p>{category}</p>
                 </div>
                 <div className={classes.addToCart}>
                     <button className={classes.addToCart_btn}>
@@ -25,12 +24,15 @@ function getProductInfo(props) {
                 </div>
             </div>
         </section>
-        <div className={classes.subImg}>
-                <img src={subImgs[0]}/>
-                <img src={subImgs[1]}/>
-                <img src={subImgs[2]}/>
-                <img src={subImgs[3]}/>
-        </div>
+        
+        {subImgs && <div className={classes.subImg}>
+            {subImgs.map(subImg => {
+                return (
+                    <img src={subImg} />
+                )
+            })}
+        </div>}
+        
 
         <Footer />
       </div>

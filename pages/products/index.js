@@ -25,21 +25,21 @@ function index(props) {
       <h3 className={classes.h3}><Link href='/'><a>Trang Chủ</a></Link></h3>
       <div className={classes.common_search_options}>
         <p>HÀNG GIA DỤNG</p>
-        <p>SẢN PHẨM DỆT MAY TRONG NHÀ</p>
+        <p>ĐỒ NỘI THẤT</p>
         <p>VĂN PHÒNG PHẨM</p>
         <p>THỰC PHẨM</p>
         <p>CHĂM SÓC SỨC KHỎE VÀ LÀM ĐẸP</p>
         <p>TRANG PHỤC NỮ</p>
         <p>TÚI VÀ GIÀY</p>
         <p>DU LỊCH</p>
-        <p>PHỤ KIỆN TRANG TRÍ</p>
+        <p>TRANG PHỤC NAM</p>
         <p>DỤNG CỤ LƯU TRỮ</p>
-        <p>DỤNG CỤ BÀN ĂN</p>
         <p>TRANG PHỤC MẶC NHÀ VÀ MẶC TRONG</p>
-        <p>GIƯỜNG</p>
-        <p>BÚT</p>
+        <p>DỤNG CỤ BÀN ĂN</p>
+        <p>DỤNG CỤ NHÀ TẮM</p>
         <p>DỤNG CỤ NHÀ BẾP</p>
       </div>
+      <h3 className={classes.h3}>TẤT CẢ SẢN PHẨM</h3>
       <div className={classes.main_content}>
         {productsList.map(product => {
           return (          

@@ -6,6 +6,11 @@
 
 .product_detail_wrapper img {
     width: 30vw;
+    margin: 0 5px;
+}
+
+.product_details {
+    margin: 0 5px;
 }
 
 .product_categories {
@@ -15,7 +20,7 @@
     justify-content: flex-start;
 }
 
-.product_categories p {
+.product_category p {
     background-color: rgba(172, 159, 159, .2);
     width: fit-content;
     padding: 3px 10px;
