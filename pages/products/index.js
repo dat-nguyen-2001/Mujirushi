@@ -42,8 +42,11 @@ function index(props) {
       <h3 className={classes.h3}>TẤT CẢ SẢN PHẨM</h3>
       <div className={classes.main_content}>
         {productsList.map(product => {
-          return (          
-          <div className={classes.product_item}><Product title={product.title} image={product.image} price={product.price}/></div>
+          const id = product._id;
+          return (
+            <Link href={`http://localhost:3000/products/${id}`}>
+              <div className={classes.product_item}><Product title={product.title} image={product.image} price={product.price}/></div>
+            </Link>          
           )
         })}
       </div>
