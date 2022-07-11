@@ -21,7 +21,7 @@
 .modal {
     z-index: 100;
     position: absolute;
-    margin-top: -75px;
+    margin-top: -70px;
     width: 20vw;
     height: 25vw;
 }

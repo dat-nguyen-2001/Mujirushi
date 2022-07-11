@@ -3,10 +3,21 @@ import Head from 'next/head';
 import Footer from '../../components/Footer/Footer';
 import Link from 'next/link';
 import Product from '../../components/Product/Product';
-
+import {useState} from 'react';
 
 function index(props) {
-  const productsList = props.products;
+  const [numOfProducts, setNumOfProducts] = useState(20);
+  let productsList;
+
+  const loadMoreHandler = function() {
+    setNumOfProducts(numOfProducts + 20)
+  }
+
+
+
+  productsList = props.products.slice(0, numOfProducts);
+
+
   return (
     <>
     <Head>
@@ -23,33 +34,73 @@ function index(props) {
         </div>
       </div>
       <h3 className={classes.h3}><Link href='/'><a>Trang Chủ</a></Link></h3>
-      <div className={classes.common_search_options}>
-        <p>HÀNG GIA DỤNG</p>
-        <p>ĐỒ NỘI THẤT</p>
-        <p>VĂN PHÒNG PHẨM</p>
-        <p>THỰC PHẨM</p>
-        <p>CHĂM SÓC SỨC KHỎE VÀ LÀM ĐẸP</p>
-        <p>TRANG PHỤC NỮ</p>
-        <p>TÚI VÀ GIÀY</p>
-        <p>DU LỊCH</p>
-        <p>TRANG PHỤC NAM</p>
-        <p>DỤNG CỤ LƯU TRỮ</p>
-        <p>TRANG PHỤC MẶC NHÀ VÀ MẶC TRONG</p>
-        <p>DỤNG CỤ BÀN ĂN</p>
-        <p>DỤNG CỤ NHÀ TẮM</p>
-        <p>DỤNG CỤ NHÀ BẾP</p>
+      <div className={classes.category_list}>
+        <ul className={classes.common_search_options}>
+          <Link href='/products/category/hanggiadung' >
+            <li>HÀNG GIA DỤNG</li>
+          </Link>
+          <Link href='/products/category/donoithat' >
+            <li>ĐỒ NỘI THẤT</li>
+          </Link>
+          <Link href='/products/category/vanphongpham' >
+            <li>VĂN PHÒNG PHẨM</li>
+          </Link>
+          <Link href='/products/category/thucpham' >
+            <li>THỰC PHẨM</li>
+          </Link>
+          <Link href='/products/category/lamdep' >
+            <li>CHĂM SÓC SỨC KHỎE VÀ LÀM ĐẸP</li>
+          </Link>
+          <Link href='/products/category/trangphucnu' >
+            <li>TRANG PHỤC NỮ</li>
+          </Link>
+          <Link href='/products/category/tuivagiay' >
+            <li>TÚI VÀ GIÀY</li>
+          </Link>
+          <Link href='/products/category/dulich' >
+            <li>DU LỊCH</li>
+          </Link>
+          <Link href='/products/category/trangphucnam' >
+            <li>TRANG PHỤC NAM</li>
+          </Link>
+          <Link href='/products/category/dungculuutru' >
+            <li>DỤNG CỤ LƯU TRỮ</li>
+          </Link>
+          <Link href='/products/category/trangphucmacnhavamactrong' >
+            <li>TRANG PHỤC MẶC NHÀ VÀ MẶC TRONG</li>
+          </Link>
+          <Link href='/products/category/dungcubanan' >
+            <li>DỤNG CỤ BÀN ĂN</li>
+          </Link>
+          <Link href='/products/category/dungcunhatam' >
+            <li>DỤNG CỤ NHÀ TẮM</li>
+          </Link>
+          <Link href='/products/category/dungcunhabep' >
+            <li>DỤNG CỤ NHÀ BẾP</li>
+          </Link>
+        </ul>
+        
       </div>
-      <h3 className={classes.h3}>TẤT CẢ SẢN PHẨM</h3>
+      <h3 className={classes.h3_under}>TẤT CẢ SẢN PHẨM</h3>
       <div className={classes.main_content}>
         {productsList.map(product => {
           const id = product._id;
           return (
             <Link href={`http://localhost:3000/products/${id}`}>
               <div className={classes.product_item}><Product title={product.title} image={product.image} price={product.price}/></div>
-            </Link>          
+            </Link>
           )
         })}
       </div>
+      
+      {/* Load more button go here */}
+      {numOfProducts<100 && 
+      <div className={classes.loadMoreBtn} >
+        <button 
+        onClick={loadMoreHandler}>
+        XEM THÊM
+        </button>
+      </div>}
       <Footer />
     </>
   )
