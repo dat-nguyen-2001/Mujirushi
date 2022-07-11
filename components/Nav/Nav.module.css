@@ -47,6 +47,14 @@
     background-color: rgb(245, 245, 245);
 }
 
+.cartItemNumber {
+    height: auto;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 1.5px;
+}
 
 .nav_options_ipad {
    display: none;

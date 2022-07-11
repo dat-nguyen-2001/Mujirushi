@@ -2,9 +2,11 @@ import classes from './productInfo.module.css';
 import Nav from '../../../components/Nav/Nav'
 import Footer from '../../../components/Footer/Footer';
 import Link from 'next/link';
-
+import {useContext} from 'react';
+import { Store } from '../../../utils/Store';
 
 function getProductInfo(props) {
+    const {state, dispatch} = useContext(Store);
     const product = props.product;
     const subImgs = product.subImg;
     const productCategory = product.category;
@@ -24,10 +26,22 @@ function getProductInfo(props) {
     if(productCategory === 'DỤNG CỤ BÀN ĂN') {category='dungcubanan'};
     if(productCategory === 'TRANG PHỤC MẶC NHÀ VÀ MẶC TRONG') {category='trangphucmacnhavamactrong'};
 
+
+    const addToCartHandler = function() {
+        if(product.countInStock <= 0) {
+            alert('Product out of stock')
+            return;
+        }
+        const existItem = state.cart.cartItems.find(item => item._id = product._id);
+        const quantity = existItem ? existItem.quantity + 1 : 1;
+        dispatch({type: 'CART_ADD_ITEM', payload: {...product, quantity}});
+        product.countInStock -=1;
+    };
+
     return (
       <div>
         <Nav />
-        <Link href={'http://localhost:3000/products'}>
+        <Link href={'/products'}>
             <h2 className={classes.h2}>TẤT CẢ SẢN PHẨM</h2>
         </Link>
         <section className={classes.product_detail_wrapper}>
@@ -41,7 +55,7 @@ function getProductInfo(props) {
                     </div>
                 </Link>
                 <div className={classes.addToCart}>
-                    <button className={classes.addToCart_btn}>
+                    <button className={classes.addToCart_btn} onClick={addToCartHandler}>
                         <span>THÊM VÀO GIỎ HÀNG</span>
                     </button>
                 </div>

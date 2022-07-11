@@ -6,9 +6,13 @@ import ErrorOutlineRoundedIcon from '@mui/icons-material/ErrorOutlineRounded';
 import DensityMediumIcon from '@mui/icons-material/DensityMedium';
 
 import Link from 'next/link';
+import { Store } from '../../utils/Store';
+import { useContext } from 'react';
 
 
 function Nav() {
+  const {state, dispatch} = useContext(Store);
+  const {cart} = state;
   return (
     <>
     <div className={classes.nav_container}>
@@ -18,15 +22,6 @@ function Nav() {
       <div className={classes.nav_img}>
         <Link href='/'><a><img src='/main-img/nav_img.png' alt='Muji nav_bar logo' /></a></Link>
       </div>
-
-      {/* <div className={classes.nav_options}>
-      <div className={classes.options_item}><Link href="products"><a>製品</a></Link></div>
-        <div className={classes.options_item}><Link href="/"><a>店</a></Link></div>
-      </div> */}
-        {/* // leave it for now */}
-      {/* <div className={classes.nav_search}>
-        
-      </div> */}
 
       <div className={classes.nav_user}>
         <div className={classes.login}>
@@ -39,10 +34,20 @@ function Nav() {
         </div>
         <div className={classes.cart}>
             <div>
-                <Link href="/cart"><a><ShoppingCartRoundedIcon/></a></Link>
+                <Link href="/checkout/cart">
+                  <a>
+                    <ShoppingCartRoundedIcon/>
+                    {cart.cartItems.length > 0 && (
+                      <span className={classes.cartItemNumber}>
+                        {cart.cartItems.reduce((num, item) => num + item.quantity, 0)}
+                      </span>
+                    )}
+                </a></Link>
             </div>
             <div className={classes.cart_text}>
-              <Link href="/cart"><a>カード</a></Link>
+              <Link href="/checkout/cart">
+                <a>カード</a>
+              </Link>
             </div>
         </div>
         <div className={classes.info}>

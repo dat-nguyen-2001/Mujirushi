@@ -1,0 +1,33 @@
+.cart_wrapper {
+    margin-top: 10px;
+    height: 100vh;
+}
+
+.cart_wrapper h2 {
+    margin: 30px 10vw;
+}
+
+.cartItems_wrapper {
+    background-color: #fbf5d1;
+    width: 80vw;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cartItems_wrapper img {
+    width: 50%;
+    margin: auto;
+}
+
+.continue_shopping {
+    width: 20vw;
+    margin: auto;
+    background-color: bisque;
+    padding: 10px 20px;
+    text-align: center;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
