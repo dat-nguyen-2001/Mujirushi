@@ -29,12 +29,12 @@ function getProductInfo(props) {
 
     const addToCartHandler = function() {
         if(product.countInStock <= 0) {
-            alert('Product out of stock')
+            alert('Product out of stock');
             return;
         }
-        const existItem = state.cart.cartItems.find(item => item._id = product._id);
-        const quantity = existItem ? existItem.quantity + 1 : 1;
-        dispatch({type: 'CART_ADD_ITEM', payload: {...product, quantity}});
+        // const existItem = state.cart.cartItems.find(item => item._id = product._id);
+        // const quantity = existItem ? existItem.quantity + 1 : 1;
+        dispatch({type: 'ADD_TO_CART', payload: product});
         product.countInStock -=1;
     };
 

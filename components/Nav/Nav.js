@@ -39,7 +39,7 @@ function Nav() {
                     <ShoppingCartRoundedIcon/>
                     {cart.cartItems.length > 0 && (
                       <span className={classes.cartItemNumber}>
-                        {cart.cartItems.reduce((num, item) => num + item.quantity, 0)}
+                        {cart.cartItems.reduce((num, item) => num + item.qty, 0)}
                       </span>
                     )}
                 </a></Link>

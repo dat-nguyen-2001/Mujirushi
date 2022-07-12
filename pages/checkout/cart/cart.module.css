@@ -4,7 +4,7 @@
 }
 
 .cart_wrapper h2 {
-    margin: 30px 10vw;
+    margin: 30px 9.5vw;
 }
 
 .cartItems_wrapper {
@@ -31,3 +31,126 @@
     margin-bottom: 15px;
     border-radius: 5px;
 }
+
+.cart_ui_content {
+    display: flex;
+    width: 82vw;
+    margin: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+}
+
+.cart_left {
+    flex: 2 1 auto;
+    padding-left: 0!important;
+}
+
+.cart_right {
+    flex: 1 1 auto;
+    padding-right: 0!important;
+}
+
+
+.header_cart_item {
+    background-color: white;
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.flex_5_8 {
+    flex: 5 1 auto;
+}
+
+.flex_1_8 {
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+.cart_item_wrapper {
+    background-color: #ffffff;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.cart_item {
+    padding: 1.6em 0;
+    display: flex;
+}
+
+.cart_item_img {
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    flex-basis: 20%;
+    cursor: pointer;
+}
+
+.cart_item_img img {
+    padding-left: 0!important;
+    width: auto;
+    max-height: 119px;
+    object-fit: contain; 
+}
+
+.cart_item_info {
+    display: flex;
+    flex-basis: 72%;
+}
+
+.item_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-basis: 50%;
+}
+
+.item_price {
+    font-size: medium;
+    font-weight: 700;
+}
+
+.item_number {
+    flex-basis: 50%;
+    display: flex;
+    margin: auto;
+    text-align: center;
+}
+
+.item_quantity {
+    padding: 0px 10px 0px 10px;
+    flex-basis: 40%;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+}
+
+.item_total_price {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 60%;
+    text-align: center;
+    color: red;
+    font-weight: bold;
+}
+
+.item_info h4 {
+    cursor: pointer;
+}
+
+.cart_item_remove{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 8%;
+    cursor: pointer;
+}
+
+.border_item {
+    width: 95%;
+    margin: auto;
+    border-bottom: solid 1px #efefef;
+}
+
