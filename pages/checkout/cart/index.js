@@ -6,16 +6,20 @@ import Link from 'next/link';
 import { useContext } from 'react';
 import {Store} from '../../../utils/Store';
 import DeleteIcon from '@mui/icons-material/Delete';
+import dynamic from 'next/dynamic';
 
 
-export default function index() {
+function index() {
     const {state, dispatch} = useContext(Store);
     const {cart : {cartItems}} = state;
+    const totalAmount = cartItems.reduce((amount, item) => amount + item.qty * item.price, 0);
+    const shippingFee = totalAmount/50;
+    const finalAmount = totalAmount + shippingFee;
   return (
     <>
-    <div className={classes.cart_wrapper}>
-    <Nav />
+        <Nav />
 
+    <div className={classes.cart_wrapper}>
     <h2>GIỎ HÀNG</h2>
 
     {/* When there's no product in the cart */}
@@ -70,12 +74,30 @@ export default function index() {
           </div>
         </div>
         <div className={classes.cart_right}>
-          right
+          <div className={classes.cart_summary}>
+            <div className={classes.total_amount}>
+              <div className={classes.title_cart_left}>Thành tiền</div>
+              <div className={classes.title_cart_right}>{totalAmount} vnd</div>
+            </div>
+            <div className={classes.shipping_fee}>
+              <div className={classes.title_cart_left}>Phí vận chuyển</div>
+              <div className={classes.title_cart_right}>{shippingFee} vnd</div>
+            </div>
+            <div className={classes.final_amount}>
+              <div className={classes.title_cart_left}>Tổng số tiền</div>
+              <div className={classes.title_cart_right}>{finalAmount} vnd</div>
+            </div>
+          </div>
+          <div className={classes.checkout_button}>
+            <Link href={'/checkout/payment'}>
+              <button>THANH TOÁN</button>
+            </Link>
+          </div>
         </div>
 
       </div>
     )}
-
+    
     </div>
 
     <Footer />
@@ -83,3 +105,5 @@ export default function index() {
 
   )
 }
+
+export default dynamic(() => Promise.resolve(index), {ssr: false})

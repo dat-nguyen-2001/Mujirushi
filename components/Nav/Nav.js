@@ -7,12 +7,16 @@ import DensityMediumIcon from '@mui/icons-material/DensityMedium';
 
 import Link from 'next/link';
 import { Store } from '../../utils/Store';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 
 function Nav() {
   const {state, dispatch} = useContext(Store);
   const {cart} = state;
+  const [cartItemsCount, setCartItemsCount] = useState(0);
+  useEffect(() => {
+    setCartItemsCount(cart.cartItems.reduce((num, item) => num + item.qty, 0),[])
+  })
   return (
     <>
     <div className={classes.nav_container}>
@@ -37,9 +41,9 @@ function Nav() {
                 <Link href="/checkout/cart">
                   <a>
                     <ShoppingCartRoundedIcon/>
-                    {cart.cartItems.length > 0 && (
+                    {cartItemsCount > 0 && (
                       <span className={classes.cartItemNumber}>
-                        {cart.cartItems.reduce((num, item) => num + item.qty, 0)}
+                        {cartItemsCount}
                       </span>
                     )}
                 </a></Link>
