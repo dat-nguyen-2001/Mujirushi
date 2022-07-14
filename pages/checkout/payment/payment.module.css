@@ -220,5 +220,6 @@
     .checkout_bottom button {
         width: 200px;
         margin: auto;
+        background-color: #c92127;
     }
 }
