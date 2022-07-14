@@ -106,3 +106,9 @@
     margin: 0;
 }  
 }
+
+@media screen and (max-width: 690px) {
+    .nav_user {
+        width: 22%;
+    }
+}

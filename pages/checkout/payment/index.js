@@ -1,54 +1,100 @@
 import classes from './payment.module.css';
+import React from 'react';
 import {useContext, useEffect, useState} from 'react';
 import {Store} from '../../../utils/Store';
-import Link from 'next/link'
+import Link from 'next/link';
+
 import Nav from '../../../components/Nav/Nav';
+import Modal from '../../../components/Modal/Modal';
 import WestIcon from '@mui/icons-material/West';
 
 function Payment() {
     const {state, dispatch} = useContext(Store);
-    const {cart : {cartItems}} = state;
+    const {cart : {cartItems}, address} = state;
     const [totalAmount, setTotalAmount] = useState(0)
     useEffect(() => {
         setTotalAmount(cartItems.reduce((amount, item) => amount + item.qty * item.price, 0))
     }, []);
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const setName = (val) => {
+        dispatch({type: 'SET_NAME', payload: val.target.value})
+    }
+
+    const setPhone = (val) => {
+        dispatch({type: 'SET_PHONE', payload: val.target.value})
+    }
+
+    const setEmail = (val) => {
+        dispatch({type: 'SET_EMAIL', payload: val.target.value})
+    }
+
+    const setCountry = (val) => {
+        dispatch({type: 'SET_COUNTRY', payload: val.target.value})
+    }
+
+    const setCity = (val) => {
+        dispatch({type: 'SET_CITY', payload: val.target.value})
+    }
+
+    const setDistrict = (val) => {
+        dispatch({type: 'SET_DISTRICT', payload: val.target.value})
+    }
+
+    const setStreet = (val) => {
+        dispatch({type: 'SET_STREET', payload: val.target.value})
+    }
+
+    const setHouseNumber = (val) => {
+        dispatch({type: 'SET_HOUSE_NUMBER', payload: val.target.value})
+    }
+
+
+    const purchase = function() {
+        if(Object.values(address).includes('')) {
+            alert('Vui lòng điền đầy đủ thông tin!');
+            return;
+        }
+        setIsOpen(true);
+    }
   return (
 <>
     <div className={classes.background_wrapper}>
-    <div className={classes.nav}><Nav /></div>
+    <div className={classes.nav}> <Nav /></div>
     <div className={classes.shipping_address}>
         <h4>ĐỊA CHỈ GIAO HÀNG</h4>
         <div className={classes.address_item}>
             <p>Họ và tên người nhận</p>
-            <input type={'text'}></input>
+            <input type={'text'} onChange={setName}></input>
         </div>
         <div className={classes.address_item}>
             <p>Số điện thoại</p>
-            <input type={'text'}></input>
+            <input type={'text'} onChange={setPhone}></input>
         </div>
         <div className={classes.address_item}>
             <p>Địa chỉ email</p>
-            <input type={'text'}></input>
+            <input type={'text'} onChange={setEmail}></input>
         </div>
         <div className={classes.address_item}>
             <p>Quốc gia</p>
-            <input type={'text'}></input>
+            <input type={'text'} onChange={setCountry}></input>
         </div>
         <div className={classes.address_item}>
             <p>Tỉnh/Thành phố</p>
-            <input type={'text'}></input>
+            <input type={'text'} onChange={setCity}></input>
         </div>
         <div className={classes.address_item}>
             <p>Quận/Huyện</p>
-            <input type={'text'}></input>
+            <input type={'text'} onChange={setDistrict}></input>
         </div>
         <div className={classes.address_item}>
-            <p>Phường/Xã</p>
-            <input type={'text'}></input>
+            <p>Tên đường</p>
+            <input type={'text'} onChange={setStreet}></input>
         </div>
         <div className={classes.address_item}>
-            <p>Địa chỉ cụ thể</p>
-            <input type={'text'}></input>
+            <p>Số nhà</p>
+            <input type={'text'} onChange={setHouseNumber}></input>
         </div>  
     </div>
 
@@ -100,12 +146,16 @@ function Payment() {
             </Link>
             <div className={classes.space}></div>
             <div className={classes.confirm}>
-                <button>XÁC NHẬN THANH TOÁN</button>
+                <button onClick={purchase}>XÁC NHẬN THANH TOÁN</button>
             </div>
         </div>
     </div>
     </div>
-
+    <Modal open={isOpen}>
+        <p>Đơn hàng của quý khách đã được tiếp nhận.
+            Cảm ơn quý khách đã mua hàng tại Muji
+        </p>
+    </Modal>
 </>
     
   )

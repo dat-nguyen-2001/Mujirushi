@@ -139,6 +139,17 @@
     color: white;
 }
 
+
+.checkout_final_amount .checkout_right {
+    color: #c92127;
+    font-weight: 500;
+}
+
+
+
+
+/* RESPONSIVE */
+
 @media screen and (max-width: 1185px) {
     .shipping_address {
         width: 60vw;
@@ -195,11 +206,6 @@
     .checkout_final_amount {
         width: 100%;
         justify-content: space-between;
-    }
-
-    .checkout_final_amount .checkout_right {
-        color: #c92127;
-        font-weight: 500;
     }
 
     .checkout_left {
