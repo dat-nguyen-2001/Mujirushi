@@ -1,7 +1,9 @@
-import classes from './login.module.css'
-import Head from 'next/head'
+import classes from './login.module.css';
+import Head from 'next/head';
+
 
 function Login() {
+  
   return (
     <>
       <Head>
@@ -33,11 +35,11 @@ function Login() {
                   <div className={classes.login_input_area}>
                     <input className={classes.login_input_userName} placeholder='Địa chỉ email'></input>
                     <div className={classes.userName_error}></div>
-                    <input className={classes.login_input_password} placeholder='Mật khẩu'></input>
+                    <input className={classes.login_input_password} placeholder='Mật khẩu' ></input>
                     <div className={classes.password_error}></div>
                   </div>
                   <p className={classes.login_button}>
-                    <a href='/'>Đăng Nhập</a>
+                    <a >Đăng Nhập</a>
                   </p>
                 </form>
                 <div className={classes.password_forgot}>

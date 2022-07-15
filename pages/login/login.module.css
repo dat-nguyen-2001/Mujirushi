@@ -80,3 +80,11 @@
     padding: 10px 5px;
     font-weight: 700;
 }
+
+
+@media screen and (max-width: 400px) {
+    .login_input_area {
+        width: 80%;
+        margin: auto;
+    }
+}
