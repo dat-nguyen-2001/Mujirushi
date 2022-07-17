@@ -3,8 +3,11 @@ import classes from './cart.module.css';
 import Nav from '../../../components/Nav/Nav';
 import Footer from '../../../components/Footer/Footer'
 import Link from 'next/link';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import {Store} from '../../../utils/Store';
+import {useSession} from 'next-auth/react';
+
 import DeleteIcon from '@mui/icons-material/Delete';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
@@ -18,6 +21,18 @@ function index() {
   const totalQuantity = cartItems.reduce((amount, item) => amount + item.qty, 0 )
   const shippingFee = totalAmount/50;
   const finalAmount = totalAmount + shippingFee;
+
+
+  const { data: session } = useSession();
+
+  const router = useRouter();
+  const { redirect } = router.query;
+
+  useEffect(() => {
+    if (!session?.user) {
+      router.push(redirect || "/login");
+    }
+  }, [router, session, redirect]);
 
   return (
     <>

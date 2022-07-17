@@ -25,13 +25,28 @@ function Login() {
   }, [router, session, redirect]);
 
   const { handleSubmit, register } = useForm();
+
+  let enteredEmail;
+  let enteredPassword;
+  const getEmail = (e) => {
+    e.preventDefault;
+    enteredEmail = e.target.value;
+    console.log(enteredEmail);
+  }
+
+  const getPassword = (e) => {
+    e.preventDefault;
+    enteredPassword = e.target.value;
+    console.log(enteredPassword)
+  }
+
   const submitHandler = hasAccount
-    ? async ({ email, password }) => {
+    ? async () => {
         try {
           const result = await signIn("credentials", {
             redirect: false,
-            email,
-            password,
+            email: enteredEmail,
+            password: enteredPassword,
           });
           if (result.error) {
             alert(result.error);
@@ -44,8 +59,8 @@ function Login() {
         try {
           await axios.post("/api/auth/signup", {
             name: "Dat",
-            email,
-            password,
+            email: enteredEmail,
+            password: enteredPassword,
           });
 
           const result = await signIn("credentials", {
@@ -105,31 +120,22 @@ function Login() {
                     placeholder="Địa chỉ email"
                     required
                     autoFocus
-                    {...register("email", {
-                      required: "Please enter email",
-                      pattern: {
-                        message: "Please enter valid email",
-                      },
-                    })}
+                    id="email"
+                    onChange={getEmail}
                   ></input>
                   <div className={classes.userName_error}></div>
                   <input
                     className={classes.login_input_password}
                     placeholder="Mật khẩu"
                     required
-                    {...register("password", {
-                      required: "Please enter password",
-                      minLength: {
-                        value: 6,
-                        message: "password is more than 5 chars",
-                      },
-                    })}
+                    id="password"
+                    onChange={getPassword}
                   ></input>
                   <div className={classes.password_error}></div>
                 </div>
                 <p
                   className={classes.login_button}
-                  onClick={handleSubmit(submitHandler)}
+                  onClick={submitHandler}
                 >
                   {hasAccount ? <a>Đăng Nhập</a> : <a>Đăng ký</a>}
                 </p>
