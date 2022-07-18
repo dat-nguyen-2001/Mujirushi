@@ -20,12 +20,6 @@ async function connect() {
   connection.isConnected = db.connections[0].readyState;
 }
 
-// async function getDb() {
-//   const data =  await mongoose.connect('mongodb+srv://mujiclone210:hno3hno3@cluster0.ne2jm4v.mongodb.net/Muji-clone?retryWrites=true&w=majority');
-//   const database = data.json();
-//   return database;
-// }
-
 async function disconnect() {
   if (connection.isConnected) {
     if (process.env.NODE_ENV === 'production') {

@@ -14,7 +14,6 @@ function Login() {
   };
 
   const { data: session } = useSession();
-
   const router = useRouter();
   const { redirect } = router.query;
 
@@ -26,43 +25,8 @@ function Login() {
 
   const { handleSubmit, register } = useForm();
 
-  let enteredEmail;
-  let enteredPassword;
-  const getEmail = (e) => {
-    e.preventDefault;
-    enteredEmail = e.target.value;
-    console.log(enteredEmail);
-  }
-
-  const getPassword = (e) => {
-    e.preventDefault;
-    enteredPassword = e.target.value;
-    console.log(enteredPassword)
-  }
-
-  const submitHandler = hasAccount
-    ? async () => {
+  const submitHandler = hasAccount ? (async ({email, password}) => { 
         try {
-          const result = await signIn("credentials", {
-            redirect: false,
-            email: enteredEmail,
-            password: enteredPassword,
-          });
-          if (result.error) {
-            alert(result.error);
-          }
-        } catch (err) {
-          alert(err);
-        }
-      }
-    : async ({ email, password }) => {
-        try {
-          await axios.post("/api/auth/signup", {
-            name: "Dat",
-            email: enteredEmail,
-            password: enteredPassword,
-          });
-
           const result = await signIn("credentials", {
             redirect: false,
             email,
@@ -74,8 +38,28 @@ function Login() {
         } catch (err) {
           alert(err);
         }
-      };
-
+      }) : 
+        (async ({ email, password }) => {
+          try {
+            await axios.post("/api/auth/signup", {
+              name: "Dat",
+              email,
+              password,
+            });
+  
+            const result = await signIn("credentials", {
+              redirect: false,
+              email,
+              password,
+            });
+            if (result.error) {
+              alert(result.error);
+            }
+          } catch (err) {
+            alert(err);
+        }
+      })
+      
   return (
     <>
       <Head>
@@ -121,7 +105,7 @@ function Login() {
                     required
                     autoFocus
                     id="email"
-                    onChange={getEmail}
+                    {...register("email")}
                   ></input>
                   <div className={classes.userName_error}></div>
                   <input
@@ -129,13 +113,13 @@ function Login() {
                     placeholder="Mật khẩu"
                     required
                     id="password"
-                    onChange={getPassword}
+                    {...register("password")}
                   ></input>
                   <div className={classes.password_error}></div>
                 </div>
                 <p
                   className={classes.login_button}
-                  onClick={submitHandler}
+                  onClick={handleSubmit(submitHandler)}
                 >
                   {hasAccount ? <a>Đăng Nhập</a> : <a>Đăng ký</a>}
                 </p>
