@@ -32,8 +32,6 @@ function getProductInfo(props) {
             alert('Product out of stock');
             return;
         }
-        // const existItem = state.cart.cartItems.find(item => item._id = product._id);
-        // const quantity = existItem ? existItem.quantity + 1 : 1;
         dispatch({type: 'ADD_TO_CART', payload: product});
         product.countInStock -=1;
     };

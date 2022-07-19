@@ -1,12 +1,10 @@
 import classes from './category.module.css';
-import Nav from '../../../components/Nav/Nav'
 import Footer from '../../../components/Footer/Footer';
 import Link from 'next/link';
 import Product from '../../../components/Product/Product';
 
 function getProductCategory(props) {
     const {productCategory} = props;
-    console.log(productCategory);
     const category = productCategory[0].category;
     return (
         <>
@@ -31,15 +29,6 @@ function getProductCategory(props) {
               )
             })}
           </div>
-          
-          {/* Load more button go here */}
-          {/* {numOfProducts<100 && 
-          <div className={classes.loadMoreBtn} >
-            <button 
-            onClick={loadMoreHandler}>
-            XEM THÊM
-            </button>
-          </div>} */}
           <Footer />
         </>
     )

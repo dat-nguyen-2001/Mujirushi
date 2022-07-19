@@ -86,7 +86,7 @@ function index(props) {
         {productsList.map(product => {
           const id = product._id;
           return (
-            <Link href={`http://localhost:3000/products/${id}`}>
+            <Link href={`/products/${id}`}>
               <div className={classes.product_item}><Product title={product.title} image={product.image} price={product.price}/></div>
             </Link>
           )
