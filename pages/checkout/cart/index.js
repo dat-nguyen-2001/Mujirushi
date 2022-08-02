@@ -14,7 +14,7 @@ import { useSession } from "next-auth/react";
 import axios from 'axios'
 import dynamic from "next/dynamic";
 
-function index() {
+function Cart() {
   const { state, dispatch } = useContext(Store);
   const {
     cart: { cartItems },
@@ -178,4 +178,4 @@ function index() {
   );
 }
 
-export default dynamic(() => Promise.resolve(index), { ssr: false });
+export default dynamic(() => Promise.resolve(Cart), { ssr: false });

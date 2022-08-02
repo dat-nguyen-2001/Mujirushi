@@ -10,7 +10,7 @@ function getProductCategory(props) {
         <>
           <div className={classes.header_wrapper}>
             <div className={classes.header_img}>
-                <Link href='/'><a><img src='/main-img/nav_img.png'/></a></Link>
+                <Link href='/'><img src='/main-img/nav_img.png'/></Link>
             </div>
             <div className={classes.header_searchBox}>
                 <input type="text" placeholder=" Search for product/ category.." />
@@ -23,7 +23,7 @@ function getProductCategory(props) {
             {productCategory.map(product => {
               const id = product._id;
               return (
-                <Link href={`http://localhost:3000/products/${id}`}>
+                <Link href={`http://localhost:3000/products/${id}`} key={id}>
                   <div className={classes.product_item}><Product title={product.title} image={product.image} price={product.price}/></div>
                 </Link>
               )

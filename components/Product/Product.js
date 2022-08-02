@@ -1,6 +1,6 @@
 import classes from './Product.module.css'
 
-export default function Product(props) {
+export default function Productt(props) {
   return (
     <div className={classes.product_wrapper}>
       <div className={classes.modal}><p className={classes.product_hover}>XEM</p></div>

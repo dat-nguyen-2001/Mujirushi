@@ -1,5 +1,6 @@
 import classes from "./login.module.css";
 
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
@@ -71,9 +72,9 @@ function Login() {
       <div className={classes.login_wrapper}>
         <div className={classes.common_header_logo}>
           <div className={classes.login_logo}>
-            <a href="/">
+            <Link href="/">
               <img src="https://img.muji.net/img/common/logo-muji.svg" />
-            </a>
+            </Link>
           </div>
         </div>
 

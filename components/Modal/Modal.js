@@ -1,27 +1,27 @@
-import classes from './Modal.module.css'
-import Link from 'next/link';
-import { Store } from '../../utils/Store';
-import {useContext} from'react';
+import classes from "./Modal.module.css";
+import Link from "next/link";
+import { Store } from "../../utils/Store";
+import { useContext } from "react";
 
-function Modal({open, children}) {
-    if(!open) return null;
-    const {dispatch} = useContext(Store);
-    const resetCart = function() {
-        dispatch({type:'RESET_CART'})
-    }
+function Modal({ open, children }) {
+  const { dispatch } = useContext(Store);
+  if (!open) return null;
+  const resetCart = function () {
+    dispatch({ type: "RESET_CART" });
+  };
   return (
     <>
-    <div className={classes.overlay}></div>
-    <div className={classes.modal_wrapper}>
+      <div className={classes.overlay}></div>
+      <div className={classes.modal_wrapper}>
         <div>{children}</div>
         <div className={classes.back_to_home}>
-        <Link href={'/'}>
+          <Link href={"/"}>
             <button onClick={resetCart}>TRANG CHỦ</button>
-        </Link>
+          </Link>
         </div>
-    </div>
+      </div>
     </>
-  )
+  );
 }
 
-export default Modal
+export default Modal;
