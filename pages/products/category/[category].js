@@ -5,7 +5,7 @@ import Productt from "../../../components/Product/Product";
 import db from "../../../utils/db";
 import Product from "../../../models/Product";
 function getProductCategory(props) {
-  const  productCategory  = JSON.parse(props.productCategory);
+  const productCategory = JSON.parse(props.productCategory);
   const category = productCategory[0].category;
   return (
     <>
@@ -46,8 +46,9 @@ function getProductCategory(props) {
 export default getProductCategory;
 
 export async function getStaticProps(context) {
+  const chosenCategory = context.params.category;
   await db.connect();
-  const data = await Product.find({category: context.params.category});
+  const data = await Product.find({ category: chosenCategory });
   const productCategory = JSON.stringify(data);
   await db.disconnect();
   // const category = context.params.category;
@@ -77,9 +78,9 @@ export async function getStaticPaths() {
       { params: { category: "dungculuutru" } },
       { params: { category: "trangphucmacnhavamactrong" } },
       { params: { category: "dungcubanan" } },
-      { params: { category: "dugcunhatam" } },
+      { params: { category: "dungcunhatam" } },
       { params: { category: "dungcunhabep" } },
     ],
-    fallback: true, // false or 'blocking'
+    fallback: false, // false or 'blocking'
   };
 }

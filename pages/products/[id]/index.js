@@ -12,51 +12,7 @@ function GetProductInfo(props) {
   const { state, dispatch } = useContext(Store);
   const product = props.product;
   const subImgs = product.subImg;
-  console.log(subImgs)
-  const productCategory = product.category;
-  let category;
-  if (productCategory === "HÀNG GIA DỤNG") {
-    category = "hanggiadung";
-  }
-  if (productCategory === "VĂN PHÒNG PHẨM") {
-    category = "vanphongpham";
-  }
-  if (productCategory === "ĐỒ NỘI THẤT") {
-    category = "donoithat";
-  }
-  if (productCategory === "CHĂM SÓC SỨC KHỎE VÀ LÀM ĐẸP") {
-    category = "lamdep";
-  }
-  if (productCategory === "DU LỊCH") {
-    category = "dulich";
-  }
-  if (productCategory === "TRANG PHỤC NAM") {
-    category = "trangphucnam";
-  }
-  if (productCategory === "TRANG PHỤC NỮ") {
-    category = "trangphucnu";
-  }
-  if (productCategory === "THỰC PHẨM") {
-    category = "thucpham";
-  }
-  if (productCategory === "DỤNG CỤ LƯU TRỮ") {
-    category = "dungculuutru";
-  }
-  if (productCategory === "TÚI VÀ GIÀY") {
-    category = "tuivagiay";
-  }
-  if (productCategory === "DỤNG CỤ NHÀ BẾP") {
-    category = "dungcunhabep";
-  }
-  if (productCategory === "DỤNG CỤ NHÀ TẮM") {
-    category = "dungcunhatam";
-  }
-  if (productCategory === "DỤNG CỤ BÀN ĂN") {
-    category = "dungcubanan";
-  }
-  if (productCategory === "TRANG PHỤC MẶC NHÀ VÀ MẶC TRONG") {
-    category = "trangphucmacnhavamactrong";
-  }
+  const category = product.category;
 
   const addToCartHandler = function () {
     if (product.countInStock <= 0) {
@@ -82,7 +38,7 @@ function GetProductInfo(props) {
           </p>
           <Link href={`/products/category/${category}`}>
             <div className={classes.product_category}>
-              <p>{productCategory}</p>
+              <p>{category}</p>
             </div>
           </Link>
           <div className={classes.addToCart}>
@@ -98,7 +54,7 @@ function GetProductInfo(props) {
 
       {subImgs && (
         <div className={classes.subImg}>
-          {subImgs.map((subImg) => {
+          {[...subImgs].map((subImg) => {
             return (
               <img
                 src={subImg}
@@ -122,7 +78,7 @@ export async function getStaticProps(context) {
   await db.connect();
   const res = await Product.find({ _id: id });
   const data = JSON.stringify(res[0]);
-  const product = JSON.parse(data)
+  const product = JSON.parse(data);
   await db.disconnect();
   return {
     props: {
@@ -143,6 +99,6 @@ export async function getStaticPaths() {
   });
   return {
     paths,
-    fallback: true, // false or 'blocking'
+    fallback: false, // false or 'blocking'
   };
 }
