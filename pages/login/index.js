@@ -26,8 +26,29 @@ function Login() {
 
   const { handleSubmit, register } = useForm();
 
-  const submitHandler = hasAccount ? (async ({email, password}) => { 
+  const submitHandler = hasAccount
+    ? async ({ email, password }) => {
         try {
+          const result = await signIn("credentials", {
+            redirect: false,
+            email,
+            password,
+          });
+          if (result.error) {
+            alert(`${result.error}: SOMETHINGS GO WRONG HERE!`);
+          }
+        } catch (err) {
+          alert(err);
+        }
+      }
+    : async ({ email, password }) => {
+        try {
+          await axios.post("/api/auth/signup", {
+            name: "Dat",
+            email,
+            password,
+          });
+
           const result = await signIn("credentials", {
             redirect: false,
             email,
@@ -39,28 +60,8 @@ function Login() {
         } catch (err) {
           alert(err);
         }
-      }) : 
-        (async ({ email, password }) => {
-          try {
-            await axios.post("/api/auth/signup", {
-              name: "Dat",
-              email,
-              password,
-            });
-  
-            const result = await signIn("credentials", {
-              redirect: false,
-              email,
-              password,
-            });
-            if (result.error) {
-              alert(result.error);
-            }
-          } catch (err) {
-            alert(err);
-        }
-      })
-      
+      };
+
   return (
     <>
       <Head>
