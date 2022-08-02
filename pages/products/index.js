@@ -7,9 +7,9 @@ import { useState } from "react";
 import Product from "../../models/Product";
 import db from "../../utils/db";
 
-function Products({products}) {
+function Products({ products }) {
   const productss = JSON.parse(products);
-  console.log(productss)
+  console.log(productss);
   const [numOfProducts, setNumOfProducts] = useState(20);
   let productsList;
 
@@ -29,7 +29,7 @@ function Products({products}) {
       <div className={classes.header_wrapper}>
         <div className={classes.header_img}>
           <Link href="/">
-              <img src="/main-img/nav_img.png" />
+            <img src="/main-img/nav_img.png" />
           </Link>
         </div>
         <div className={classes.header_searchBox}>
@@ -37,9 +37,7 @@ function Products({products}) {
         </div>
       </div>
       <h3 className={classes.h3}>
-        <Link href="/">
-          Trang Chủ
-        </Link>
+        <Link href="/">Trang Chủ</Link>
       </h3>
       <div className={classes.category_list}>
         <ul className={classes.common_search_options}>

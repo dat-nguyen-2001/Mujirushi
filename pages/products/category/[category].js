@@ -1,8 +1,9 @@
 import classes from "./category.module.css";
 import Footer from "../../../components/Footer/Footer";
 import Link from "next/link";
-import Product from "../../../components/Product/Product";
-
+import Productt from "../../../components/Product/Product";
+import db from "../../../utils/db";
+import Product from "../../../models/Product";
 function getProductCategory(props) {
   const  productCategory  = JSON.parse(props.productCategory);
   const category = productCategory[0].category;
@@ -27,7 +28,7 @@ function getProductCategory(props) {
           return (
             <Link href={`/products/${id}`} key={id}>
               <div className={classes.product_item}>
-                <Product
+                <Productt
                   title={product.title}
                   image={product.image}
                   price={product.price}
