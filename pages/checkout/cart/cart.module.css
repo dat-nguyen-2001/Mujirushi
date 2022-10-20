@@ -110,7 +110,7 @@
 .item_info {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-basis: 50%;
 }
 
@@ -139,6 +139,10 @@
     width: 40%;
     margin: auto;
     padding: 0;
+}
+
+.change_quantity_icon {
+    cursor: pointer;
 }
 
 .item_total_price {

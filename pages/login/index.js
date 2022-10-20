@@ -1,11 +1,12 @@
 import classes from "./login.module.css";
 
+import Head from "next/head";
 import Link from "next/link";
+
 import React, { useEffect, useState } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
-import Head from "next/head";
 import axios from "axios";
 
 function Login() {
@@ -44,7 +45,7 @@ function Login() {
     : async ({ email, password }) => {
         try {
           await axios.post("/api/auth/signup", {
-            name: "Dat",
+            name: email.split('@')[0],
             email,
             password,
           });

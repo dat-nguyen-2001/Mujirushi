@@ -1,0 +1,123 @@
+.header_wrapper {
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.header_img img{
+    width: 170px;
+    padding: 22px 15px;
+    margin-left: 4vw;
+    align-items: baseline;
+}
+
+.header_searchBox input {
+    width: 70vw;
+    height: 35px;
+    margin: 15px 5vw 15px 0;
+    align-items: baseline;
+    border-radius: 5px;
+    border: solid rgba(0, 0, 0, .3) thin;
+}
+
+.h3 {
+    padding: 10px 5vw;
+}
+
+.h3_under {
+    padding: 10px 5vw;
+    margin-bottom: 75px;
+}
+
+.common_search_options {
+    width: 90vw;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    border: solid rgba(0, 0, 0, .3) thin;
+    border-radius: .5rem;
+    margin-bottom: 50px;
+}
+
+.category_list ul {
+    list-style-type: none;
+}
+
+.common_search_options li {
+    padding: 10px 10px;
+    font-size: .9rem;
+}
+
+.common_search_options li:hover {
+    background-color: gray;
+    color: white;
+    cursor: pointer;
+    border-radius: .5rem;
+}
+
+.main_content {
+    display: flex;
+    flex-wrap: wrap;
+    width: 96vw;
+    height: 100%;
+    margin-top: 25px;
+    margin-bottom: 50px;
+}
+
+.product_item {
+    width: 20vw;
+    height: auto;
+    margin: auto;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+
+.loadMoreBtn {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.loadMoreBtn button {
+    width: 50%;
+    margin: 0 auto;
+    width: 200px;
+    height: 50px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: medium;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 1115px) {
+
+    .product_item {
+        width: 30vw;
+    }
+    
+}
+
+@media screen and (max-width: 820px) {
+    .product_item {
+        width: 40vw;
+    }
+    .header_searchBox input {
+        width: 60vw;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .header_img {
+        display: none;
+    }
+    .header_searchBox input {
+        width: 75vw;
+        height: 35px;
+        margin: 5px auto;
+        border-radius: 5px;
+        border: solid rgba(0, 0, 0, .3) thin;
+    }
+}

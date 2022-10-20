@@ -1,16 +1,19 @@
 import classes from "./productInfo.module.css";
+
 import Nav from "../../../components/Nav/Nav";
 import Footer from "../../../components/Footer/Footer";
-import Link from "next/link";
-import { useContext } from "react";
+
 import { Store } from "../../../utils/Store";
 import db from "../../../utils/db";
 import Product from "../../../models/Product";
+
+import Link from "next/link";
+import { useContext } from "react";
 import { ObjectID } from "bson";
 
-function GetProductInfo(props) {
+function GetProductInfo({product}) {
   const { state, dispatch } = useContext(Store);
-  const product = props.product;
+  // const product = props.product;
   const subImgs = product.subImg;
   const category = product.category;
 
@@ -23,6 +26,9 @@ function GetProductInfo(props) {
     product.countInStock -= 1;
   };
 
+  function numberWithCommas(num) {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
   return (
     <div>
       <Nav />
@@ -34,7 +40,7 @@ function GetProductInfo(props) {
         <div className={classes.product_details}>
           <h1>{product.title}</h1>
           <p>
-            <b>{product.price}</b> vnd
+            <b>{numberWithCommas(product.price)}</b> đ
           </p>
           <Link href={`/products/category/${category}`}>
             <div className={classes.product_category}>

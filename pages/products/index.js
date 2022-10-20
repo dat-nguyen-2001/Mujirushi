@@ -1,23 +1,39 @@
 import classes from "./products.module.css";
+
 import Head from "next/head";
 import Footer from "../../components/Footer/Footer";
-import Link from "next/link";
 import Productt from "../../components/Product/Product";
-import { useState } from "react";
+
+import Link from "next/link";
 import Product from "../../models/Product";
 import db from "../../utils/db";
 
-function Products({ products }) {
-  const productss = JSON.parse(products);
-  console.log(productss);
+import { useState } from "react";
+import { useRouter } from 'next/router'
+
+
+function Products({ products, query }) {
+  const productss = query.search ? JSON.parse(products).filter(product => product.title.includes((query.search).toUpperCase())): JSON.parse(products);
   const [numOfProducts, setNumOfProducts] = useState(20);
-  let productsList;
+
 
   const loadMoreHandler = function () {
     setNumOfProducts(numOfProducts + 20);
   };
 
-  productsList = productss.slice(0, numOfProducts);
+  const productsList = productss.slice(0, numOfProducts);
+
+  function numberWithCommas(num) {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
+  const router = useRouter();
+  const searchInput = document.getElementById('searchInput')
+  const searchHandler = function(e) {
+    e.preventDefault();
+    router.push(`/products?search=${searchInput.value}`)
+    searchInput.value = ''
+  }
 
   return (
     <>
@@ -32,9 +48,9 @@ function Products({ products }) {
             <img src="/main-img/nav_img.png" />
           </Link>
         </div>
-        <div className={classes.header_searchBox}>
-          <input type="text" placeholder=" Search for product/ category.." />
-        </div>
+        <form className={classes.header_searchBox} onSubmit={searchHandler}>
+          <input id="searchInput" type="text" placeholder="Tìm kiếm tên sản phẩm / danh mục ..." />
+        </form>
       </div>
       <h3 className={classes.h3}>
         <Link href="/">Trang Chủ</Link>
@@ -95,7 +111,7 @@ function Products({ products }) {
                 <Productt
                   title={product.title}
                   image={product.image}
-                  price={product.price}
+                  price={numberWithCommas(product.price)}
                 />
               </div>
             </Link>
@@ -116,14 +132,23 @@ function Products({ products }) {
 
 export default Products;
 
-export async function getStaticProps() {
+export async function getServerSideProps({ query }) {
   await db.connect();
   const data = await Product.find();
   const products = JSON.stringify(data);
   await db.disconnect();
+  if (query === undefined) {
+    return {
+      props: {
+        products,
+        query: null
+      }
+    }
+  }
   return {
     props: {
       products,
+      query
     },
   };
 }

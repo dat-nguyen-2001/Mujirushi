@@ -16,3 +16,8 @@
     opacity: 0.9;
 }
 
+.card__title {
+    max-width: 350px;
+    overflow: hidden;
+    white-space: nowrap;
+}

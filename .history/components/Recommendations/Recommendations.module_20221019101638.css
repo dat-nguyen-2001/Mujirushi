@@ -1,0 +1,34 @@
+.card_wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10vw, 25.66vw));
+    gap: 2rem;
+    justify-content: center;
+    font-size: small;
+  }
+  
+  .showMoreButton {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .showMoreButton button {
+    min-width: 200px;
+    height: 50px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: medium;
+    cursor: pointer;
+  }
+  
+  .showMoreButton button:hover {
+    background-color: whitesmoke;
+  }
+
+  @media screen and (max-width: 750px) {
+    .card_wrapper {
+      grid-template-columns: repeat(auto-fit, minmax(10vw, 45vw));
+      gap: 2vw;
+    }
+}

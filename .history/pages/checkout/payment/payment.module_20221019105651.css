@@ -1,0 +1,254 @@
+.background_wrapper {
+    background-color: #f0f0f0;
+}
+
+.nav {
+    background-color: white;
+}
+
+.shipping_address {
+    width: 50vw;
+    margin: 30px auto;
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px 20px;
+}
+
+
+
+.address_item {
+    display: flex;
+    align-items: center;
+}
+
+.address_item p {
+    flex-basis: 30%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.address_item input {
+    flex-basis: 70%;
+    display: flex;
+    justify-content: flex-start;
+    border-radius: 5px;
+    height: 100%;
+}
+
+.payment_methods {
+    width: 50vw;
+    margin: 10px auto;
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-bottom: 150px;
+}
+
+.payment_methods img {
+    padding: 0 10px;
+}
+
+.bottom_lengthen {
+    height: 15px;
+    width: 100%;
+    background-color: #f0f0f0;
+}
+
+
+.sidebar_container {
+    z-index: 100;
+    position: fixed;
+    bottom: 0;
+    padding: 20px 10vw;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    min-height: 150px;
+    justify-content: space-between;
+    background-color: white;
+}
+
+.checkout_top {
+    flex-basis: 75%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.checkout_total_amount {
+    display: flex;
+}
+
+.checkout_shipping_fee {
+    display: flex;
+}
+
+.checkout_final_amount {
+    display: flex;
+}
+
+.checkout_left {
+    flex-basis: 80%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.checkout_right {
+    flex-basis: 20%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.checkout_bottom {
+    display: flex;
+    align-items: center;
+}
+
+.back_to_cart {
+    cursor: pointer;
+    flex-basis: 18%;
+    display: flex;
+    align-items: center;
+}
+
+.back_to_cart p {
+    margin-left: 10px;
+    font-weight: 500;
+}
+
+.space {
+    flex-basis: 52%;
+}
+
+.confirm {
+    flex-basis: 30%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.confirm button {
+    cursor: pointer;
+    background-color: #c92127;
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 8px;
+    align-items: center;
+    font-weight: bold;
+    font-size: .9em;
+    color: white;
+}
+
+
+.checkout_final_amount .checkout_right {
+    color: #c92127;
+    font-weight: 500;
+}
+
+
+
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 1185px) {
+    .shipping_address {
+        width: 60vw;
+    }
+
+    .payment_methods{
+        width: 60vw;
+    }
+}
+
+@media screen and (max-width:1130px){
+    .back_to_cart {
+        flex-basis: 25%;
+    }
+}
+
+@media screen and (max-width: 885px) {
+    .sidebar_container {
+        height: 15%;
+        margin: auto 0;
+    }
+    .shipping_address {
+        width: 80vw;
+    }
+
+    .payment_methods {
+        width: 80vw;
+    }
+
+    .back_to_cart{
+        display: none;
+    }
+
+    .sidebar_container {
+        flex-direction: row;
+    }
+
+    .checkout_top {
+        flex-basis: 50%;
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .checkout_total_amount {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .checkout_shipping_fee {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .checkout_final_amount {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .checkout_left {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+
+    .checkout_right {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .checkout_bottom {
+        flex-basis: 50%;
+    }
+
+    .checkout_bottom button {
+        width: 200px;
+        margin: auto;
+        background-color: #c92127;
+    }
+}
+
+@media screen and (max-width: 525px) {
+    .sidebar_container {
+        flex-direction: column;
+    }
+    .checkout_bottom {
+        width: 40vw;
+        margin: auto;
+        padding-top: 10px;
+    }
+
+    .address_item {
+        flex-direction: column;
+        align-items: flex-start;
+        height: 200px;
+    }
+
+    .address_item input {
+        width: fit-content;
+        height: 200px;
+    }
+}
+

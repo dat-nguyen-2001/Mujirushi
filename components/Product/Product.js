@@ -7,7 +7,7 @@ export default function Productt(props) {
       
       <img src={props.image}/>
       <p>{props.title}</p>
-      <p className={classes.price}><b>{props.price}</b> vnd</p>
+      <p className={classes.price}><b>{props.price}</b> đ</p>
     </div>
   )
 }

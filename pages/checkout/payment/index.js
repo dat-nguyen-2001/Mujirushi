@@ -1,13 +1,13 @@
 import classes from "./payment.module.css";
 
-import Link from "next/link";
 import Nav from "../../../components/Nav/Nav";
+
 import Modal from "../../../components/Modal/Modal";
 import WestIcon from "@mui/icons-material/West";
 
-import { useContext, useEffect, useState } from "react";
 import { Store } from "../../../utils/Store";
-import React from "react";
+import Link from "next/link";
+import { useContext, useEffect, useState, React } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 
@@ -102,6 +102,10 @@ function Payment() {
     setIsOpen(true);
   }
 
+  function numberWithCommas(num) {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   return (
     <>
       <div className={classes.background_wrapper}>
@@ -117,14 +121,6 @@ function Payment() {
           <div className={classes.address_item}>
             <p>Số điện thoại</p>
             <input type={"text"} onChange={getPhone}></input>
-          </div>
-          <div className={classes.address_item}>
-            <p>Địa chỉ email</p>
-            <input type={"text"} onChange={getEmail}></input>
-          </div>
-          <div className={classes.address_item}>
-            <p>Quốc gia</p>
-            <input type={"text"} onChange={getCountry}></input>
           </div>
           <div className={classes.address_item}>
             <p>Tỉnh/Thành phố</p>
@@ -192,16 +188,16 @@ function Payment() {
           <div className={classes.checkout_top}>
             <div className={classes.checkout_total_amount}>
               <div className={classes.checkout_left}>Thành tiền</div>
-              <div className={classes.checkout_right}>{totalAmount}đ</div>
+              <div className={classes.checkout_right}>{numberWithCommas(totalAmount)}đ</div>
             </div>
             <div className={classes.checkout_shipping_fee}>
               <div className={classes.checkout_left}>Phí vận chuyển</div>
-              <div className={classes.checkout_right}>{totalAmount / 50}đ</div>
+              <div className={classes.checkout_right}>{numberWithCommas(totalAmount / 50)}đ</div>
             </div>
             <div className={classes.checkout_final_amount}>
               <div className={classes.checkout_left}>Tổng số tiền</div>
               <div className={classes.checkout_right}>
-                {totalAmount * 1.02}đ
+                {numberWithCommas(totalAmount * 1.02)}đ
               </div>
             </div>
           </div>

@@ -1,8 +1,9 @@
+import classes from "./about.module.css";
+
 import Head from "next/head";
 import Nav from "../../components/Nav/Nav";
 import Footer from "../../components/Footer/Footer";
 
-import classes from "./about.module.css";
 
 function About() {
   return (

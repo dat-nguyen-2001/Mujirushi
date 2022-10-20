@@ -5,6 +5,7 @@
     margin: 0px 10vw 0 10vw;
     align-items: center;
     font-size: small;
+    overflow-x: hidden;
 }
 
 .nav_container img {

@@ -25,6 +25,10 @@ function Nav() {
   });
 
   const { data: session } = useSession();
+
+  const handleSignOut = function() {
+    signOut()
+  }
   return (
     <>
       <div className={classes.nav_container}>
@@ -75,7 +79,7 @@ function Nav() {
           </div>
 
           {session?.user ? (
-            <div className={classes.info_logout} onClick={() => signOut()}>
+            <div className={classes.info_logout} onClick={() => handleSignOut()}>
               <div>
                 <a>
                   <LogoutIcon />

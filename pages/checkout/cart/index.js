@@ -2,16 +2,17 @@ import classes from "./cart.module.css";
 
 import Nav from "../../../components/Nav/Nav";
 import Footer from "../../../components/Footer/Footer";
-import Link from "next/link";
+
 import DeleteIcon from "@mui/icons-material/Delete";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
+import { Store } from "../../../utils/Store";
+
+import Link from "next/link";
 import { useContext, useEffect } from "react";
 import { useRouter } from "next/router";
-import { Store } from "../../../utils/Store";
 import { useSession } from "next-auth/react";
-import axios from 'axios'
 import dynamic from "next/dynamic";
 
 function Cart() {
@@ -41,7 +42,9 @@ function Cart() {
     }
   }, [router, session, redirect]);
 
-
+  function numberWithCommas(num) {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
   return (
     <>
       <Nav />
@@ -58,7 +61,9 @@ function Cart() {
               <a className={classes.continue_shopping}>Tiếp tục mua sắm</a>
             </Link>
           </div>
-        ) : (
+        ) : 
+        // When there is product(s) in the cart
+        (
           <div className={classes.cart_ui_content}>
             <div className={classes.cart_left}>
               <div>
@@ -91,7 +96,7 @@ function Cart() {
                               </Link>
                             </div>
                             <div className={classes.item_price}>
-                              {item.price} vnd
+                              {numberWithCommas(item.price)} đ
                             </div>
                           </div>
                           <div className={classes.item_number}>
@@ -104,7 +109,7 @@ function Cart() {
                                   })
                                 }
                               >
-                                <ArrowDownwardIcon />
+                                <ArrowDownwardIcon className={classes.change_quantity_icon}/>
                               </div>
                               {item.qty}
                               <div
@@ -115,11 +120,11 @@ function Cart() {
                                   })
                                 }
                               >
-                                <ArrowUpwardIcon />
+                                <ArrowUpwardIcon className={classes.change_quantity_icon} />
                               </div>
                             </div>
                             <div className={classes.item_total_price}>
-                              {item.qty * item.price} vnd
+                              {numberWithCommas(item.qty * item.price)} đ
                             </div>
                           </div>
                         </div>
@@ -146,13 +151,13 @@ function Cart() {
                 <div className={classes.total_amount}>
                   <div className={classes.title_cart_left}>Thành tiền</div>
                   <div className={classes.title_cart_right}>
-                    {totalAmount} vnd
+                    {numberWithCommas(totalAmount)} đ
                   </div>
                 </div>
                 <div className={classes.shipping_fee}>
                   <div className={classes.title_cart_left}>Phí vận chuyển</div>
                   <div className={classes.title_cart_right}>
-                    {shippingFee} vnd
+                    {numberWithCommas(shippingFee)} đ
                   </div>
                 </div>
                 <div className={classes.final_amount}>
@@ -160,7 +165,7 @@ function Cart() {
                     Tổng({totalQuantity} sản phẩm)
                   </div>
                   <div className={classes.title_cart_right}>
-                    {finalAmount} vnd
+                    {numberWithCommas(finalAmount)} đ
                   </div>
                 </div>
               </div>
