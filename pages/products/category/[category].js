@@ -12,7 +12,7 @@ import { useState } from "react";
 
 
 
-function getProductCategory(props) {
+function ProductCategory(props) {
   const productCategory = JSON.parse(props.productCategory);
   const category = productCategory[0].category;
   
@@ -79,7 +79,7 @@ function getProductCategory(props) {
   );
 }
 
-export default getProductCategory;
+export default ProductCategory;
 
 export async function getStaticProps(context) {
   const chosenCategory = context.params.category;
