@@ -1,5 +1,6 @@
 # Mujirushi
 Mujirushi is an ecommerce site that allows customers to find and buy Muji's products.
+![muji homepage](https://user-images.githubusercontent.com/94024020/197675949-07688fe5-1eb9-4f86-a30e-0c52265ba98f.png)
 
 This project uses Nextjs for frontend as well as simple APIs, I also use MongoDB as the no-SQL DBMS. 
 ## Prerequisites
